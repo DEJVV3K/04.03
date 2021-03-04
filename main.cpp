@@ -7,12 +7,12 @@ using namespace std;
 class obrazek {
     public:
     ifstream fileIn;
-    string obr [20] [20];
-    string ob [20] [20];
-    int licznikR;
+    char obr [20] [20];
+    char ob [20] [20];
+    int licznikR = 0;
     void run();
-    void rekure(string obraz [20] [20]);
-    bool rekur(string obraz [20] [20]);
+    void rekure(char obraz [20] [20]);
+    bool rekur(char obraz [20] [20]);
 };
 
 void obrazek::run() {
@@ -29,21 +29,22 @@ void obrazek::run() {
         }
         fileIn >> skipL;
         
-        if(rekure(obr)) {
+        if(rekur(obr)) {
         	if(pierwszy == true) {
-        		rekur(obr){
-        			pierwszy == false
+        		if(rekur(obr)) {
+        			pierwszy == false;
 				}
 				cout << "Jest obrazkiem rekurencyjnym\n";
-				licznikR++
-			} else {
+				licznikR++;
+			}
+    	} else {
 			cout << "Nie jest obrazkiem rekurencyjnym!\n";
         }
     }
-    cout << "obrazkow rekurencyjnych jest: " << licznikR"\n";
+cout << "obrazkow rekurencyjnych jest: " << licznikR << "\n";
 }
 
-bool obrazek::rekur(string obr [20] [20]) {
+bool obrazek::rekur(char obr [20] [20]) {
 
     for(int i = 0; i < 10; i++) {
         for(int j=0;j<10;++j) {
